@@ -1,5 +1,5 @@
 {
-    "name": "jamorn.pe/it2",
+    "name": "jamorn.pe/web-it",
     "autoload": {
         "psr-4": {
             "App\\": "src/"

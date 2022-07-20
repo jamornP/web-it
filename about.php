@@ -1,3 +1,8 @@
+<?php require $_SERVER['DOCUMENT_ROOT']."/web-it/vendor/autoload.php";?>
+<?php 
+    use App\Model\Team;
+    $teamObj = new Team;
+?>
 <?php 
     session_start();
     $_SESSION['menu']='about';
@@ -141,76 +146,82 @@
                     <h6 class="position-relative d-inline text-primary ps-4">My Team</h6>
                     <h2 class="mt-2">ผู้บริหารและบุคลากร</h2>
                 </div>
-                <div class="row g-4">
-                    <div class="col-lg-4 wow fadeInUp" data-wow-delay="0.1s">
-                    </div>
-                    <div class="col-lg-4 wow fadeInUp" data-wow-delay="0.1s">
-                        <div class="team-item">
-                            <div class="d-flex">
-                                <div class="flex-shrink-0 d-flex flex-column align-items-center mt-4 pt-5" style="width: 75px;">
-                                    <a class="btn btn-square text-primary bg-white my-1" href=""><i class="fab fa-facebook-f"></i></a>
-                                    <a class="btn btn-square text-primary bg-white my-1" href=""><i class="fab fa-twitter"></i></a>
-                                    <a class="btn btn-square text-primary bg-white my-1" href=""><i class="fab fa-instagram"></i></a>
-                                    <a class="btn btn-square text-primary bg-white my-1" href=""><i class="fab fa-linkedin-in"></i></a>
-                                </div>
-                                <img class="img-fluid rounded w-100" src="img/team-1.jpg" alt="">
-                            </div>
-                            <div class="px-4 py-3">
-                                <h5 class="fw-bold m-0">Jhon Doe</h5>
-                                <small>CEO</small>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <br>
-                <div class="row g-4">
-                    <div class="col-lg-4 wow fadeInUp" data-wow-delay="0.1s">
-                    </div>
-                    <div class="col-lg-4 wow fadeInUp" data-wow-delay="0.1s">
-                        <div class="team-item">
-                            <div class="d-flex">
-                                <div class="flex-shrink-0 d-flex flex-column align-items-center mt-4 pt-5" style="width: 75px;">
-                                    <a class="btn btn-square text-primary bg-white my-1" href=""><i class="fab fa-facebook-f"></i></a>
-                                    <a class="btn btn-square text-primary bg-white my-1" href=""><i class="fab fa-twitter"></i></a>
-                                    <a class="btn btn-square text-primary bg-white my-1" href=""><i class="fab fa-instagram"></i></a>
-                                    <a class="btn btn-square text-primary bg-white my-1" href=""><i class="fab fa-linkedin-in"></i></a>
-                                </div>
-                                <img class="img-fluid rounded w-100" src="img/team-2.jpg" alt="">
-                            </div>
-                            <div class="px-4 py-3">
-                                <h5 class="fw-bold m-0">Emma William</h5>
-                                <small>Manager</small>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <br>
-                <div class="row g-4">
-                    <?php
-                        for($i=1;$i<=5;$i++){
-                            ?>
-                                <div class="col-lg-4 wow fadeInUp" data-wow-delay="0.1s">
-                                    <div class="team-item">
-                                        <div class="d-flex">
-                                            <div class="flex-shrink-0 d-flex flex-column align-items-center mt-4 pt-5" style="width: 75px;">
-                                                <a class="btn btn-square text-primary bg-white my-1" href=""><i class="fab fa-facebook-f"></i></a>
-                                                <a class="btn btn-square text-primary bg-white my-1" href=""><i class="fab fa-twitter"></i></a>
-                                                <a class="btn btn-square text-primary bg-white my-1" href=""><i class="fab fa-instagram"></i></a>
-                                                <a class="btn btn-square text-primary bg-white my-1" href=""><i class="fab fa-linkedin-in"></i></a>
+                <?php
+                    $datas = $teamObj->getAllTeam();
+                    $i=2;
+                    foreach($datas as $data){
+                        if($data['num']==1){
+                            echo "
+                                <div class='row g-4'>
+                                    <div class='col-lg-4 wow fadeInUp' data-wow-delay='0.1s'>
+                                    </div>
+                                    <div class='col-lg-4 wow fadeInUp' data-wow-delay='0.1s'>
+                                        <div class='team-item'>
+                                            <div class='d-flex'>
+                                                <div class='flex-shrink-0 d-flex flex-column align-items-center mt-4 pt-5' style='width: 75px;'>
+                                                </div>
+                                                <img class='img-fluid rounded w-100' src='img/team/{$data['image']}' alt=''>
+                                                </div>
+                                                <div class='px-4 py-3'>
+                                                    <h5 class='fw-bold m-0'>{$data['fullname']}</h5>
+                                                    <small>{$data['position']}</small>
                                             </div>
-                                            <img class="img-fluid rounded w-100" src="img/team-3.jpg" alt="">
-                                        </div>
-                                        <div class="px-4 py-3">
-                                            <h5 class="fw-bold m-0"><?php echo $i;?> Noah Michael</h5>
-                                            <small>Designer</small>
                                         </div>
                                     </div>
                                 </div>
-                            <?php
+                                <br>
+                            ";
+                        }elseif($data['num']==2){
+                            echo "
+                                    <div class='row g-4'>
+                                        <div class='col-lg-4 wow fadeInUp' data-wow-delay='0.1s'>
+                                        </div>
+                                        <div class='col-lg-4 wow fadeInUp' data-wow-delay='0.1s'>
+                                            <div class='team-item'>
+                                                <div class='d-flex'>
+                                                    <div class='flex-shrink-0 d-flex flex-column align-items-center mt-4 pt-5' style='width: 75px;'>
+                                                    </div>
+                                                    <img class='img-fluid rounded w-100' src='img/team/{$data['image']}' alt=''>
+                                                </div>
+                                                <div class='px-4 py-3'>
+                                                    <h5 class='fw-bold m-0'>{$data['fullname']}</h5>
+                                                    <small>{$data['position']}</small>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <br>
+                                ";
+                        }elseif($data['num']>=3){
+                            $i++;
+                            $j=$i+2;
+                            if($i==3){
+                                echo "<div class='row g-4'>";
+                            }
+                            echo "
+                                
+                                    <div class='col-lg-4 wow fadeInUp' data-wow-delay='0.{$j}s'>
+                                        <div class='team-item'>
+                                            <div class='d-flex'>
+                                                <div class='flex-shrink-0 d-flex flex-column align-items-center mt-4 pt-5' style='width: 75px;'>
+                                                    
+                                                </div>
+                                                <img class='img-fluid rounded w-100' src='img/team/{$data['image']}' alt=''>
+                                                </div>
+                                                <div class='px-4 py-3'>
+                                                    <h5 class='fw-bold m-0'>{$data['fullname']}</h5>
+                                                    <small>{$data['position']}</small>
+                                            </div>
+                                        </div>
+                                    </div>
+                                
+                            ";
+                            if($i>count($datas)){
+                                echo "</div>";
+                            }
                         }
-                    ?>
-                    
-                </div>
+                    }
+                ?>
             </div>
         </div>
         <!-- Team End -->

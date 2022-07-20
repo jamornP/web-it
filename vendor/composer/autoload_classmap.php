@@ -6,6 +6,7 @@ $vendorDir = dirname(dirname(__FILE__));
 $baseDir = dirname($vendorDir);
 
 return array(
+    'App\\Model\\Service' => $baseDir . '/src/Model/Service.php',
     'Composer\\InstalledVersions' => $vendorDir . '/composer/InstalledVersions.php',
     'League\\ColorExtractor\\Color' => $vendorDir . '/league/color-extractor/src/League/ColorExtractor/Color.php',
     'League\\ColorExtractor\\ColorExtractor' => $vendorDir . '/league/color-extractor/src/League/ColorExtractor/ColorExtractor.php',

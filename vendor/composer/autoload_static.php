@@ -35,6 +35,7 @@ class ComposerStaticInit0f6a74c753aac294e472dafd5b8515bd
     );
 
     public static $classMap = array (
+        'App\\Model\\Service' => __DIR__ . '/../..' . '/src/Model/Service.php',
         'Composer\\InstalledVersions' => __DIR__ . '/..' . '/composer/InstalledVersions.php',
         'League\\ColorExtractor\\Color' => __DIR__ . '/..' . '/league/color-extractor/src/League/ColorExtractor/Color.php',
         'League\\ColorExtractor\\ColorExtractor' => __DIR__ . '/..' . '/league/color-extractor/src/League/ColorExtractor/ColorExtractor.php',

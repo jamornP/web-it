@@ -1,3 +1,8 @@
+<?php require $_SERVER['DOCUMENT_ROOT']."/web-it/vendor/autoload.php";?>
+<?php 
+    use App\Model\Service;
+    $serviceObj = new Service;
+?>
 <?php 
     session_start();
     $_SESSION['menu']='service';
@@ -82,27 +87,29 @@
                 <div class="row g-4">
                     <?php
                         $time=["0.1s","0.3s","0.6s"];
-                        for($i=1;$i<= 10;$i++){
-                            if((fmod($i, 3))==0){
-                                $j=2;
+                        $si=0;
+                        $datas = $serviceObj->getAllService();
+                        foreach($datas as $data){
+                            $si++;
+                            if((fmod($si, 3))==0){
+                                $sj=2;
                             }else{
-                                $j=fmod($i, 3)-1;
+                                $sj=fmod($si, 3)-1;
                             }
-                            
-                            ?>
-                            <div class="col-lg-4 col-md-6 wow zoomIn" data-wow-delay="<?php echo $time[$j];?>">
-                                <div class="service-item d-flex flex-column justify-content-center text-center rounded">
-                                    <div class="service-icon flex-shrink-0">
-                                        <i class="fa fa-home fa-2x"></i>
+                            echo "
+                                <div class='col-lg-4 col-md-6 wow zoomIn' data-wow-delay='{$time[$sj]}'>
+                                    <div class='service-item d-flex flex-column justify-content-center text-center rounded'>
+                                        <div class='service-icon flex-shrink-0'>
+                                            {$data['icon']}
+                                        </div>
+                                        <h5 class='mb-3'>{$data['title']}</h5>
+                                        <p>{$data['detail']}</p>
+                                        <a class='btn px-3 mt-auto mx-auto' href='{$data['link']}'>Select</a>
                                     </div>
-                                    <h5 class="mb-3">SEO Optimization</h5>
-                                    <p>Erat ipsum justo amet duo et elitr dolor, est duo duo eos lorem sed diam stet diam sed stet lorem.</p>
-                                    <a class="btn px-3 mt-auto mx-auto" href="">Read More</a>
                                 </div>
-                            </div>
-                            <?php
+                            ";
                         }
-                    ?>                 
+                    ?>            
                 </div>
             </div>
         </div>
