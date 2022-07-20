@@ -1,6 +1,6 @@
-  =>  Template Name    : JobEntry - Job Portal Website Template
+  =>  Template Name    : IT Science@KMITL
 
-  =>  Template Link    : https://htmlcodex.com/job-portal-website-template
+  =>  Template Link    : https://htmlcodex.com/seo-agency-website-template
 
   =>  Template License : https://htmlcodex.com/license (or read the LICENSE.txt file)
 
